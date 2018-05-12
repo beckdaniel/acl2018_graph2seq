@@ -50,9 +50,13 @@ Before reading this, it is better to go through the Sockeye tutorial first. I am
 
 Check `toy/run_ggnn_toy.sh`. It contains a bunch of new options which are restricted to this Sockeye fork. Let's start with the new data options.
 
+### Data
+
 The key thing to remember is that inputs are now graphs. We represent graphs using two files, where each line is a graph. The first file contains a list of nodes, where each space-separated token is considered a node. This could be a tokenised sentence, for instance, where each word would be represented as a node. The second file contains a list of adjacencies, where each triple (<src>,<tgt>,<label>) is an edge. <src> and <tgt> are node *indices*, in the corresponding node list in the first file. <label> is just the edge label. Finally, there is also a JSON file containing the edge vocabulary, similar to what Sockeye uses as vocabulary files for source and target languages as well.
 
 The nodes file is given in the `--source` option, while `--source-graphs` gives the adjacency lists. For validation data, the corresponding options are `--validation-source` and `--val-source-graphs`. Finally, the vocabulary containing the edge labels is given through teh `--edge-vocab` option.
+
+### Training
 
 The remaining new options are related to the new encoder, a Gated Graph Neural Network. However, for historical reasons, I abbreviated it as `grn` in the API. This will probably change in the future. Here is a list of what all `grn` based options do:
 
@@ -77,3 +81,11 @@ The remaining new options are related to the new encoder, a Gated Graph Neural N
 `--grn-positional`: enables positional embeddings. Notice this is for DAGs only (check the paper).
 
 `--grn-pos-embed`: dimensionality of positional emebddings.
+
+### Decoding
+
+Here is where things start to get ugly...
+
+There are no extra options in decoding. But here's the catch, the input graphs format for decoding differ from training. Instead of having two files, nodes and edges, we have a single file containing both. Each line contains a node list (as in training) and an adjacency list (as in training) separated by a TAB. This can easily be done using the `paste` shell command.
+
+The reason for this is again historical and also lazyness in finding a proper way to deal with the decoding API. In the future, this will be made consistent, probably using the single file approach which I think it is simpler.
