@@ -98,3 +98,5 @@ Yes, a few more ugly caveats:
 - Here are a few more fun caveats for the edge vocabulary:
 -- Notice in the example we have an edge label called 's', which stands for self-loops. Notice also that its index is 3. Here's the fun bit: for decoding the self-loop index is *hard-coded*, which means it should *always be 3*. I don't think I have to mention there are plans to fix this...
 -- If you're using positional embeddings we will assume that 1) your graphs are DAGs and 2) you have a default edge label. For 2), again, due to hard-coding, the default edge is assumed to have label 'd'. Yes, it will be fixed.
+
+Follow the rules above and you can train your own graph-to-sequence model as well. :)
