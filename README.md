@@ -2,7 +2,9 @@
 Code for:
 
 "Graph-to-Sequence Learning using Gated Graph Neural Networks"
+
 Daniel Beck, Gholamreza Haffari, Trevor Cohn
+
 ACL 2018
 
 ## Requirements
