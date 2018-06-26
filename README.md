@@ -124,3 +124,10 @@ TODO
 ### 3) Decoding, postprocessing and evaluation
 
 TODO
+
+
+## Syntax-based NMT
+
+We used the data from Bastings et al. (EMNLP 2017), obtained directly from the authors. However, we will put some pointers here in case you want to use your own syntax-based NMT system.
+
+TODO
