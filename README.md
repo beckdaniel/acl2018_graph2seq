@@ -30,12 +30,15 @@ or other more recent packages depending on your cuda version. Check the MXNet pa
 3) Change to branch `acl2018` and install Sockeye. Any extra requirements will be installed automatically.
 
 `cd sockeye`
+
 `git checkout acl2018`
+
 `pip install -e .`
 
 4) Now let's test it, first train a toy model:
 
 `cd toy`
+
 `./run_ggnn_toy.sh`
 
 And now try to decode it:
