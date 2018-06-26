@@ -30,4 +30,8 @@ cat ${ORIG_AMR_DIR}/test/amr-release-* > ${PREPROC_DIR}/test/raw_amrs.txt
 # CONVERT ORIGINAL AMR SEMBANK TO ONELINE FORMAT
 for SPLIT in train dev test; do
     python split_amr.py ${PREPROC_DIR}/${SPLIT}/raw_amrs.txt ${PREPROC_DIR}/${SPLIT}/surface.txt ${PREPROC_DIR}/${SPLIT}/graphs.txt
+    python preproc_amr.py ${PREPROC_DIR}/${SPLIT}/graphs.txt ${PREPROC_DIR}/${SPLIT}/surface.txt ${FINAL_AMR_DIR}/${SPLIT}/nodes.pp.txt ${FINAL_AMR_DIR}/${SPLIT}/surface.pp.txt --mode LINE_GRAPH --triples-output ${FINAL_AMR_DIR}/${SPLIT}/triples.pp.txt --anon --map-output ${FINAL_AMR_DIR}/${SPLIT}/map.pp.txt --anon-surface ${FINAL_AMR_DIR}/${SPLIT}/anon.surface.pp.txt --nodes-scope ${FINAL_AMR_DIR}/${SPLIT}/nodes.scope.pp.txt --scope
+    paste ${FINAL_AMR_DIR}/${SPLIT}/nodes.pp.txt ${FINAL_AMR_DIR}/${SPLIT}/triples.pp.txt > ${FINAL_AMR_DIR}/${SPLIT}/nodes_triples.pp.txt
 done
+
+echo '{"d": 1, "r": 2, "s": 3}' > ${FINAL_AMR_DIR}/edge_vocab.json

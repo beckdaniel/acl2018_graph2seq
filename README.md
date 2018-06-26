@@ -102,3 +102,25 @@ Yes, a few more ugly caveats:
 -- If you're using positional embeddings we will assume that 1) your graphs are DAGs and 2) you have a default edge label. For 2), again, due to hard-coding, the default edge is assumed to have label 'd'. Yes, it will be fixed.
 
 Follow the rules above and you can train your own graph-to-sequence model as well. :)
+
+
+## AMR generation
+
+### 1) Preprocessing
+
+First step in replicating the AMR generation experiments is to preprocess the data. A few important steps here:
+
+- Get the AMR Sembank (LDC2017T10). We can't distribute it because it's paid. Put the folder called "abstract_meaning_representation_amr_2.0" inside the "data" folder.
+- Get the AMR tools from here: https://github.com/nschneid/amr-hackathon
+Put the files "amr.py" and "amr.peg" inside "data/src" (TODO: there must a better way to distribute this...)
+- Change the repository folder inside "src/regen_amr.sh"
+
+Given these steps, running "src/regen_amr.sh" should be enough to get all you need.
+
+### 2) Training models
+
+TODO
+
+### 3) Decoding, postprocessing and evaluation
+
+TODO
