@@ -36,6 +36,7 @@ or other more recent packages depending on your cuda version. Check the MXNet pa
 `git checkout acl2018`
 
 `pip install -e .`
+`pip install PyYAML==3.12`
 
 4) Now let's test it, first train a toy model:
 
